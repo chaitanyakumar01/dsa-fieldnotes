@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2efe5">
+  <title>DSA Fieldnotes — A2Z Study Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="planner.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Planner navigation">
+      <a class="brand" href="#top" aria-label="DSA Fieldnotes home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-name">fieldnotes<span> / DSA</span></span>
+      </a>
+      <div class="rail-label">YOUR ROUTE</div>
+      <nav id="week-nav" class="week-nav" aria-label="Study weeks"></nav>
+      <div class="rail-bottom">
+        <a class="official-link" href="https://takeuforward.org/prep-hub/strivers-a2z-dsa-sheet" target="_blank" rel="noreferrer"><span>OFFICIAL SHEET</span><span aria-hidden="true">↗</span></a>
+        <button id="reset-progress" class="reset-button" type="button">Reset saved progress</button>
+      </div>
+    </aside>
+
+    <main id="top" class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>YOUR STUDY DESK</span><span class="breadcrumb-dot">/</span><span id="top-week-label">WEEK 01</span></div>
+        <div class="topbar-right"><a class="pool-shortcut" href="#question-pool">QUESTION POOL <span aria-hidden="true">↓</span></a><span class="save-indicator"><span></span> SAVED IN THIS BROWSER</span><span class="topbar-date" id="today-date"></span></div>
+      </header>
+
+      <section class="welcome-band" aria-labelledby="page-title">
+        <div class="welcome-copy">
+          <p class="eyebrow">YOUR FIVE-MONTH ROUTE · 2 HOURS / STUDY DAY</p>
+          <h1 id="page-title">Make the next<br><em>call.</em></h1>
+          <p class="welcome-description">A guided path from recursion onward. The official A2Z sheet has 20 modules and 495 problems; the 126 here are study sessions, not a replacement for that count.</p>
+        </div>
+        <div class="progress-stamp" aria-label="Overall completion">
+          <div class="progress-ring" id="progress-ring"><div><strong id="progress-percent">0%</strong><span>COMPLETE</span></div></div>
+          <p><strong id="progress-count">0 / 120</strong><span>study sessions logged</span></p>
+        </div>
+        <div class="band-index" aria-hidden="true">A2Z<br>495 TOPICS</div>
+      </section>
+
+      <section class="sheet-map-section" aria-labelledby="sheet-map-title">
+        <div class="sheet-map-heading"><div><p class="eyebrow">OFFICIAL STRIVER A2Z SCOPE</p><h2 id="sheet-map-title">20 modules · <span id="module-total">495</span> problems</h2><p>Module totals follow the live takeUforward syllabus. Priority labels are study guidance, not official frequency rankings.</p></div><a href="https://takeuforward.org/prep-hub/strivers-a2z-dsa-sheet?page=sheet" target="_blank" rel="noreferrer">OPEN FULL SHEET ↗</a></div>
+        <div id="module-grid" class="module-grid"></div>
+      </section>
+
+      <section class="workbench" aria-label="Selected study session">
+        <div class="session-column">
+          <div class="section-heading">
+            <div><p class="eyebrow">CURRENT SESSION</p><h2 id="session-title">Loading your plan...</h2></div>
+            <span class="session-number" id="session-number">01 / 120</span>
+          </div>
+          <div class="day-strip" id="day-strip" aria-label="Choose a study day"></div>
+
+          <article class="session-panel">
+            <div class="session-meta"><span id="session-topic" class="topic-tag">RECURSION</span><span id="session-priority" class="priority-tag">CORE · HIGH-YIELD</span><span id="session-duration">120 MIN</span></div>
+            <h3 id="day-title"></h3>
+            <p id="day-goal" class="day-goal"></p>
+            <div class="why-block"><span class="mini-label">AAJ SIMPLE WORDS MEIN</span><p id="day-why"></p></div>
+            <div id="worked-example" class="worked-example" hidden><span class="mini-label">CHHOTA DRY RUN</span><p id="worked-example-text"></p></div>
+
+            <div class="session-columns">
+              <div><div class="subhead"><span class="step-index">01</span><h4>Do this, in order</h4></div><ol id="task-steps" class="task-steps"></ol></div>
+              <div><div class="subhead"><span class="step-index">02</span><h4>Time blocks</h4></div><div id="time-blocks" class="time-blocks"></div></div>
+            </div>
+
+            <div class="problem-section">
+              <div class="subhead problem-heading"><span class="step-index">03</span><h4>Practice picks</h4><span class="practice-note">Try before opening a solution</span></div>
+              <div id="problem-list" class="problem-list"></div>
+            </div>
+            <div class="finish-line">
+              <div><span class="mini-label">SESSION DONE WHEN</span><p id="done-criteria"></p></div>
+              <button id="complete-session" class="complete-button" type="button"><span class="button-check" aria-hidden="true">✓</span><span id="complete-label">Mark session done</span></button>
+            </div>
+          </article>
+          <div class="coach-note" id="coach-note"><span class="coach-mark">NOTE</span><p></p></div>
+        </div>
+
+        <aside class="side-column" aria-label="Week overview">
+          <section class="week-brief">
+            <div class="side-heading"><p class="eyebrow">WEEK AT A GLANCE</p><span id="week-code">01</span></div>
+            <h2 id="week-title"></h2><p id="week-summary" class="week-summary"></p>
+            <div class="week-meter"><div><span>WEEKLY PROGRESS</span><strong id="week-count">0 / 6</strong></div><div class="meter-track"><span id="week-meter-fill"></span></div></div>
+            <div class="week-outcome"><span class="mini-label">BY THE END OF THIS WEEK</span><p id="week-outcome"></p></div>
+          </section>
+          <section class="checkpoint-section">
+            <p class="eyebrow">YOUR CHECKPOINT</p><h3>Explain it without notes.</h3>
+            <p id="week-checkpoint"></p>
+            <div class="checkpoint-status" id="checkpoint-status"><span></span><span id="checkpoint-label">Finish all 6 sessions to unlock your checkpoint.</span></div>
+          </section>
+          <section class="rhythm-section">
+            <p class="eyebrow">THE 2-HOUR RHYTHM</p>
+            <div class="rhythm-row"><span>01</span><p><strong>Understand</strong><br>Watch/read one concept. Note the invariant.</p><time>25 MIN</time></div>
+            <div class="rhythm-row"><span>02</span><p><strong>Attempt</strong><br>Think, trace examples, then write code.</p><time>75 MIN</time></div>
+            <div class="rhythm-row"><span>03</span><p><strong>Remember</strong><br>Record the pattern and next redo date.</p><time>20 MIN</time></div>
+          </section>
+        </aside>
+      </section>
+      <section id="question-pool" class="pool-section" aria-labelledby="pool-title">
+        <div class="pool-heading">
+          <div><p class="eyebrow">SIDE QUESTS · LEETCODE</p><h2 id="pool-title">Fresh questions. No repeats.</h2><p>Curated to reinforce the A2Z path and fill the gaps after your solved list. Open a problem on LeetCode, then track your own queue here.</p></div>
+          <div class="pool-actions-top"><div class="pool-count"><strong id="pool-total">0</strong><span>fresh picks</span></div><button id="surprise-pick" class="surprise-button" type="button">PICK FOR ME <span aria-hidden="true">↗</span></button></div>
+        </div>
+        <div class="pool-stats" aria-live="polite">
+          <div><strong id="pool-queue-count">0</strong><span>IN YOUR QUEUE</span></div>
+          <div><strong id="pool-done-count">0</strong><span>MARKED ACCEPTED</span></div>
+          <div><strong id="pool-excluded-count">0</strong><span>IDS EXCLUDED</span></div>
+          <p>LeetCode account lists don’t sync with this page. Use “Open LeetCode” and add the question to a list there if you want it saved on your account.</p>
+        </div>
+        <div class="pool-controls">
+          <label class="pool-search-label"><span>FIND A QUESTION</span><input id="pool-search" type="search" placeholder="Search title or number" autocomplete="off"></label>
+          <label class="pool-select-label"><span>TOPIC</span><select id="pool-topic"><option value="all">All topics</option></select></label>
+          <label class="pool-select-label"><span>LEVEL</span><select id="pool-difficulty"><option value="all">All levels</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+        </div>
+        <div id="pool-tabs" class="pool-tabs" role="tablist" aria-label="Question status">
+          <button type="button" role="tab" aria-selected="true" data-pool-view="fresh">Fresh pool <span id="fresh-tab-count"></span></button>
+          <button type="button" role="tab" aria-selected="false" data-pool-view="queue">My queue <span id="queue-tab-count"></span></button>
+          <button type="button" role="tab" aria-selected="false" data-pool-view="done">Marked Accepted <span id="done-tab-count"></span></button>
+          <button type="button" role="tab" aria-selected="false" data-pool-view="retry">Retry attempts <span>3</span></button>
+        </div>
+        <div id="pool-grid" class="pool-grid" aria-live="polite"></div>
+        <div id="pool-empty" class="pool-empty" hidden><strong>No questions match those filters.</strong><span>Try another topic or switch back to the fresh pool.</span></div>
+        <p id="random-announcement" class="visually-hidden" aria-live="polite"></p>
+        <p class="pool-footnote">The IDs you listed are excluded from the fresh pool. The three non-Accepted attempts are kept in Retry attempts, not counted as solved.</p>
+      </section>
+      <footer class="page-footer"><span>STRIVER A2Z ORDER · PERSONAL STUDY COMPANIONS</span><span>One session is progress. A streak is optional.</span></footer>
+    </main>
+  </div>
+  <dialog id="reset-dialog" class="confirm-dialog">
+    <form method="dialog"><p class="eyebrow">START FRESH?</p><h2>Clear your saved progress?</h2><p>This removes planner completions, question queue, and question-pool marks stored in this browser. Your plan stays here.</p><div class="dialog-actions"><button value="cancel" class="cancel-button">Keep progress</button><button value="confirm" class="confirm-button">Clear progress</button></div></form>
+  </dialog>
+</body>
+</html>
