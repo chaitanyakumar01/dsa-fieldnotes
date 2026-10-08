@@ -34,21 +34,21 @@
 
       <section class="welcome-band" aria-labelledby="page-title">
         <div class="welcome-copy">
-          <p class="eyebrow">YOUR FIVE-MONTH ROUTE · 2 HOURS / STUDY DAY</p>
-          <h1 id="page-title">Make the next<br><em>call.</em></h1>
-          <p class="welcome-description">A guided path from recursion onward. The official A2Z sheet has 20 modules and 495 problems; the 126 here are study sessions, not a replacement for that count.</p>
+          <p class="eyebrow">AAPKA DSA STUDY PLAN</p>
+          <h1 id="page-title">Aaj ka topic.</h1>
+          <p class="welcome-description">Din chuno, topic padho, aur diye gaye sawaal solve karo.</p>
         </div>
         <div class="progress-stamp" aria-label="Overall completion">
           <div class="progress-ring" id="progress-ring"><div><strong id="progress-percent">0%</strong><span>COMPLETE</span></div></div>
           <p><strong id="progress-count">0 / 120</strong><span>study sessions logged</span></p>
         </div>
-        <div class="band-index" aria-hidden="true">A2Z<br>495 TOPICS</div>
       </section>
 
-      <section class="sheet-map-section" aria-labelledby="sheet-map-title">
-        <div class="sheet-map-heading"><div><p class="eyebrow">OFFICIAL STRIVER A2Z SCOPE</p><h2 id="sheet-map-title">20 modules · <span id="module-total">495</span> problems</h2><p>Module totals follow the live takeUforward syllabus. Priority labels are study guidance, not official frequency rankings.</p></div><a href="https://takeuforward.org/prep-hub/strivers-a2z-dsa-sheet?page=sheet" target="_blank" rel="noreferrer">OPEN FULL SHEET ↗</a></div>
+      <details class="sheet-map-section">
+        <summary>Full A2Z topic map · <span id="module-total">495</span> questions</summary>
+        <div class="sheet-map-heading"><p>Official Striver A2Z syllabus modules.</p><a href="https://takeuforward.org/prep-hub/strivers-a2z-dsa-sheet?page=sheet" target="_blank" rel="noreferrer">OPEN FULL SHEET ↗</a></div>
         <div id="module-grid" class="module-grid"></div>
-      </section>
+      </details>
 
       <section class="workbench" aria-label="Selected study session">
         <div class="session-column">
@@ -62,16 +62,8 @@
             <div class="session-meta"><span id="session-topic" class="topic-tag">RECURSION</span><span id="session-priority" class="priority-tag">CORE · HIGH-YIELD</span><span id="session-duration">120 MIN</span></div>
             <h3 id="day-title"></h3>
             <p id="day-goal" class="day-goal"></p>
-            <div class="why-block"><span class="mini-label">AAJ SIMPLE WORDS MEIN</span><p id="day-why"></p></div>
-            <div id="worked-example" class="worked-example" hidden><span class="mini-label">CHHOTA DRY RUN</span><p id="worked-example-text"></p></div>
-
-            <div class="session-columns">
-              <div><div class="subhead"><span class="step-index">01</span><h4>Do this, in order</h4></div><ol id="task-steps" class="task-steps"></ol></div>
-              <div><div class="subhead"><span class="step-index">02</span><h4>Time blocks</h4></div><div id="time-blocks" class="time-blocks"></div></div>
-            </div>
-
             <div class="problem-section">
-              <div class="subhead problem-heading"><span class="step-index">03</span><h4>Practice picks</h4><span class="practice-note">Try before opening a solution</span></div>
+              <div class="subhead problem-heading"><h4>Aaj ke sawaal</h4><span class="practice-note">Pehle khud try karo</span></div>
               <div id="problem-list" class="problem-list"></div>
             </div>
             <div class="finish-line">
@@ -125,6 +117,7 @@
           <button type="button" role="tab" aria-selected="false" data-pool-view="retry">Retry attempts <span>3</span></button>
         </div>
         <div id="pool-grid" class="pool-grid" aria-live="polite"></div>
+        <div class="pool-pagination"><span id="pool-showing"></span><button id="pool-load-more" type="button">SHOW MORE</button></div>
         <div id="pool-empty" class="pool-empty" hidden><strong>No questions match those filters.</strong><span>Try another topic or switch back to the fresh pool.</span></div>
         <p id="random-announcement" class="visually-hidden" aria-live="polite"></p>
         <p class="pool-footnote">The IDs you listed are excluded from the fresh pool. The three non-Accepted attempts are kept in Retry attempts, not counted as solved.</p>
